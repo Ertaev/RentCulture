@@ -1,0 +1,20 @@
+.btn {
+  font-family: "Merriweather", sans-serif;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  padding: 8px 40px;
+  border-radius: 5px;
+  color: #fff!important;
+  background: #1FB724;
+  transition: background .4s ease;
+  cursor: pointer;
+  &:hover {
+    background: rgba(31, 183, 36, .7);
+  }
+  &:active {
+    background: darken(#1FB724, 5%);
+  }
+}

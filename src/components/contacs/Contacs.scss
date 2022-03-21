@@ -1,0 +1,109 @@
+.contacts.page-wrap {
+  .page-wrap__content {
+    color: #000;
+    flex-direction: column;
+    justify-content: center;
+
+    h3 {
+      width: 100%;
+      font-size: 32px;
+      line-height: 48px;
+      font-weight: 400;
+      color: #000;
+    }
+    .contacts-info {
+      width: 100%;
+    }
+
+    .contacts-info__left {
+      width: 300px;
+      margin-right: 100px;
+      .tabs-togglers {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #000;
+        li {
+          font-family: "Merriweather", sans-serif;
+          cursor: pointer;
+        }
+      }
+      .tabs-info {
+        p {
+          font-family: 'Merriweather', serif;
+          font-size: 18px;
+          line-height: 24px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .contacts-info__right {
+      .mobile {
+        font-family: 'Merriweather', serif;
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 400;
+      }
+      .time {
+        font-family: 'Merriweather', serif;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 300;
+        margin-top: 70px;
+      }
+      .map {
+        font-family: 'Merriweather', serif;
+        display: block;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+        width: fit-content;
+        border-bottom: 1px solid #000;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts.page-wrap {
+    .page-wrap__content {
+      .contacts-info {
+        position: relative;
+        height: 250px;
+        flex-direction: column;
+
+        .contacts-info__left {
+          width: 100%;
+          margin-right: 0;
+        }
+        .contacts-info__right {
+          position: absolute;
+          right: 0;
+          top: 80px;
+          .time {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .contacts.page-wrap {
+    .page-wrap__content {
+      .contacts-info {
+        height: auto;
+
+        .contacts-info__right {
+          position: relative;
+          margin-top: 50px;
+          top: 0px;
+        }
+      }
+    }
+  }
+}

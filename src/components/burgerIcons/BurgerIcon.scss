@@ -1,0 +1,41 @@
+.burger {
+  display: none;
+  margin: 0 -10px;
+  flex-direction: column;
+  cursor: pointer;
+
+  .FaBars {
+    padding: 10px;
+  
+    div {
+      height: 1px;
+      width: 30px;
+      background: #1FB724;
+    }
+    div:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+  
+  .FaTimes {
+    padding: 16.5px 10px;
+  
+    div {
+      height: 1px;
+      width: 30px;
+      background: #1FB724;
+    }
+    div:first-child {
+      transform: rotate(45deg);
+    }
+    div:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .burger {
+    display: block;
+  }
+}
