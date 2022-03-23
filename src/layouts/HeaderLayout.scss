@@ -39,14 +39,63 @@ header {
     transform: translate(-50%, -50%);
   }
   .nav {
-    li {
-      margin-right: 20px;
-      cursor: pointer;
+    position: relative;
+    .nav-list {
+      li {
+        cursor: pointer;
+        & + li {
+          margin-left: 20px;
+        }
+      }
+    }
+    .user {
+      svg {
+        opacity: .5;
+        transition: opacity .5s ease;
+      }
+
+      &:hover {
+        svg {
+          opacity: 1;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: 40px;
+      padding: 10px 0;
+      background: #f6f6f6;
+      border-radius: 10px;
+      min-width: 280px;
+      color: #000;
+      opacity: 0;
+      transition: opacity .5s ease;
+      &.active {
+        opacity: 1;
+      }
+      li {
+        padding: 10px 20px;
+        &:hover {
+          background: #EAEAEA;
+          path {
+            fill: #1FB724;
+          }
+        }
+      }
     }
   }
   .btn {
     font-family: 'Montserrat', serif;
     padding: 5px 25px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #1FB724;
+    border-radius: 50%;
   }
 }
 
