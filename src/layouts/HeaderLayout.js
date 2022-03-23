@@ -6,8 +6,6 @@ import Button from "../components/button/Button";
 import BurgerIcon from "../components/burgerIcons/BurgerIcon";
 
 import "./HeaderLayout.scss";
-import logo from "../assets/img/logo.png";
-import logoMini from "../assets/img/logoMini.png";
 
 const HeaderLayout = () => {
   const navList = [
@@ -81,7 +79,6 @@ const HeaderLayout = () => {
           </ul>
 
           <NavLink to="/" className="logo">
-            {/* <img src={logo} alt="logo" /> */}
           </NavLink>
 
           <div className="nav d-flex ai-center">
