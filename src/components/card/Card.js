@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
 
 import "./Card.scss";
 import Button from "../button/Button";
 import add from "../../assets/img/add.svg";
 import added from "../../assets/img/added.svg";
+import MainContext from "../../context/MainContext";
 
 const Card = ({
   id,
@@ -13,14 +14,12 @@ const Card = ({
   price,
   year,
   onPlus,
-  wasAdded = false,
   loading = false,
 }) => {
-  const [isAdded, setIsAdded] = useState(wasAdded);
+  const { wasAdded } = useContext(MainContext)
 
   const clickToAdd = () => {
     onPlus({ id, title, img, price });
-    setIsAdded(!isAdded);
   };
 
   return (
@@ -29,7 +28,7 @@ const Card = ({
         <ContentLoader
           speed={2}
           width={400}
-          height={460}
+          height={430}
           viewBox="0 0 400 460"
           backgroundColor="#f3f3f3"
           foregroundColor="#ecebeb"
@@ -52,7 +51,7 @@ const Card = ({
             </h3>
 
             <button onClick={clickToAdd}>
-              <img src={isAdded ? added : add} alt="1" />
+              <img src={wasAdded(id) ? added : add} alt="1" />
             </button>
           </div>
 

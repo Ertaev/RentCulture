@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
 
 import "./Autopark.scss";
 import kia from "../../assets/img/kia.png";
@@ -13,7 +12,7 @@ const Autopark = () => {
 
   return (
     <div className="autopark page-wrap">
-      <div className="page-wrap__header d-flex jc-between">
+      <div className="page-wrap__header d-flex">
         <h2>Автопарк</h2>
 
         <ul className="d-flex ai-center">
@@ -21,15 +20,13 @@ const Autopark = () => {
             className={tabIndex === 0 ? "active" : ""}
             onClick={() => setTabIndex(0)}
           >
-            {" "}
-            Автомобили{" "}
+            Автомобили
           </li>
           <li
             className={tabIndex === 1 ? "active" : ""}
             onClick={() => setTabIndex(1)}
           >
-            {" "}
-            Условия{" "}
+            Условия
           </li>
         </ul>
       </div>

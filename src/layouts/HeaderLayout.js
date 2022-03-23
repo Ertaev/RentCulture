@@ -60,7 +60,7 @@ const HeaderLayout = () => {
 
   return (
     <>
-      <header className={`container bg ${color ? " bg" : ""}`}>
+      <header className={`container ${color ? " bg" : ""}`}>
         <BurgerMenu clickToCallBack={clickToCallBack} clickToMenu={clickToMenu} />
 
         <div className="header d-flex ai-center jc-between">

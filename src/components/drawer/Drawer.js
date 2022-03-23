@@ -21,7 +21,7 @@ const Drawer = ({ onCLose, deleteCar, cartItems = []}) => {
                   <div key={item.id} className="cartItem d-flex ai-center">
                     <div
                       className="cartImg"
-                      style={{ backgroundImage: `url(${item.src})` }}
+                      style={{ backgroundImage: `url(${item.img})` }}
                     ></div>
 
                     <div>
