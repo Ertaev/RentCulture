@@ -20,7 +20,7 @@ const Autopark = ({
   addCarToCart
 }) => {
 
-  const { items, cartItems } = useContext(MainContext);
+  const { items } = useContext(MainContext);
 
   const renderItems = () => {
     const filtredItems = items.filter((item) =>
@@ -45,7 +45,6 @@ const Autopark = ({
       </div>
       {cartOpened && (
         <Drawer
-          cartItems={cartItems}
           onCLose={() => setCartOpened(false)}
           deleteCar={deleteCarCart}
         />
@@ -72,7 +71,7 @@ const Autopark = ({
           </div>
         </div>
 
-        <div className="cars d-flex jc-between">{renderItems()}</div>
+        <div className="cars">{renderItems()}</div>
       </div>
     </div>
   );

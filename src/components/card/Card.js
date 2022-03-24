@@ -25,20 +25,20 @@ const Card = ({
   return (
     <div className="card">
       {loading ? (
-        <ContentLoader
-          speed={2}
-          width={400}
-          height={430}
-          viewBox="0 0 400 460"
-          backgroundColor="#f3f3f3"
-          foregroundColor="#ecebeb"
-        >
-          <rect x="13" y="168" rx="3" ry="3" width="178" height="6" />
-          <rect x="0" y="0" rx="20" ry="20" width="380" height="254" />
-          <rect x="0" y="294" rx="10" ry="10" width="254" height="28" />
-          <rect x="348" y="292" rx="10" ry="10" width="32" height="32" />
-          <rect x="0" y="352" rx="10" ry="10" width="254" height="28" />
-        </ContentLoader>
+        <div> <p>Загрузка</p> </div>
+        // <ContentLoader
+        //   speed={2}
+        //   width={380}
+        //   height={430}
+        //   viewBox="0 0 400 460"
+        //   backgroundColor="#f3f3f3"
+        //   foregroundColor="#ecebeb"
+        // >
+        //   <rect x="0" y="0" rx="20" ry="20" width="380" height="254" />
+        //   <rect x="0" y="300" rx="10" ry="10" width="260" height="28" />
+        //   <rect x="348" y="300" rx="10" ry="10" width="32" height="32" />
+        //   <rect x="0" y="370" rx="10" ry="10" width="150" height="28" />
+        // </ContentLoader>
       ) : (
         <>
           <div className="img">

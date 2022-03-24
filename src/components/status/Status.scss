@@ -1,0 +1,18 @@
+.status {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+
+    h4 {
+        color: #000;
+        margin-bottom: 10px;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        img {
+            margin-right: 10px;
+        }
+    }
+}

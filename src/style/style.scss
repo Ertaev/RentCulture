@@ -124,6 +124,9 @@ input, textarea {
 .jc-between {
   justify-content: space-between;
 }
+.jc-center {
+  justify-content: center;
+}
 .ai-center {
   align-items: center;
 }
@@ -149,6 +152,25 @@ body {
 .container {
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.content {
+  padding-top: 100px;
+  height: auto;
+  .header {
+    padding: 40px 0;
+  }
+  h1 {
+    font-weight: 400;
+  }
+  .cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 40px 20px;
+    background: #f6f6f6;
+    border-radius: 20px 20px 0 0;
+  }
 }
 
 @media (max-width: 768px) {

@@ -6,6 +6,7 @@ import MainContext from "./context/MainContext";
 import HeaderLayout from "./layouts/HeaderLayout";
 import Home from "./pages/home/Home";
 import Autopark from "./pages/autopark/Autopark";
+import Orders from "./pages/orders/Orders";
 import LogIn from "./pages/logIn/LogIn";
 
 import "slick-carousel/slick/slick.css";
@@ -71,7 +72,7 @@ function App() {
   }
 
   return (
-    <MainContext.Provider value={{ items, cartItems, wasAdded }}>
+    <MainContext.Provider value={{ items, cartItems, wasAdded, setCartOpened, setCartItems }}>
       <Routes>
         <Route path="/" element={<HeaderLayout />}>
           <Route index element={<Home />} />
@@ -90,6 +91,8 @@ function App() {
               />
             }
           />
+          <Route path="orders" element={<Orders />} />
+
           <Route path="login" element={<LogIn />} />
         </Route>
       </Routes>

@@ -17,11 +17,15 @@
   }
   
   .content {
+    padding-top: 0;
     position: absolute;
     margin: auto;
     width: 100%;
     height: 60vh;
     top: 30vh;
+    h1 {
+      font-weight: 600;
+    }
 
     .contentLeft {
       div:first-child {
