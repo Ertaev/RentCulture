@@ -43,12 +43,13 @@ const Autopark = ({
       <div className="basket" onClick={() => setCartOpened(true)}>
         <img src={basket} alt="basket" />
       </div>
-      {cartOpened && (
-        <Drawer
-          onCLose={() => setCartOpened(false)}
-          deleteCar={deleteCarCart}
-        />
-      )}
+
+      <Drawer
+        onCLose={() => setCartOpened(false)}
+        opened={cartOpened}
+        deleteCar={deleteCarCart}
+      />
+
       <div className="content container">
         <div className="header d-flex ai-center jc-between">
           <h1>Автомобили</h1>

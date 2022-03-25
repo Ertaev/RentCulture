@@ -9,7 +9,7 @@ import "./Drawer.scss";
 import Status from "../status/Status";
 import MainContext from "../../context/MainContext";
 
-const Drawer = ({ onCLose, deleteCar }) => {
+const Drawer = ({ onCLose, deleteCar, opened }) => {
   const { cartItems, setCartItems } = useContext(MainContext)
   const [isCompleted, setIsComplete] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -31,7 +31,7 @@ const Drawer = ({ onCLose, deleteCar }) => {
   }
 
   return (
-    <div className="overlay">
+    <div className={`overlay ${opened ? "visible" : ""}`}>
       <div className="drawer d-flex fd-column">
         <div className="d-flex jc-between ai-center">
           <h3> Корзина </h3>

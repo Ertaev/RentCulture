@@ -19,7 +19,7 @@ const Card = ({
   const { wasAdded } = useContext(MainContext)
 
   const clickToAdd = () => {
-    onPlus({ id, title, img, price });
+    onPlus({ id, parentId: id, title, img, price });
   };
 
   return (
