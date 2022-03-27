@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 import BurgerMenu from "../components/burgerMenu/BurgerMenu";
 import Button from "../components/button/Button";
 import BurgerIcon from "../components/burgerIcons/BurgerIcon";
+
+import useModal from "../hooks/useModal";
 
 import "./HeaderLayout.scss";
 
@@ -129,9 +131,19 @@ const HeaderLayout = () => {
     setClickToUser(!clickToUser);
   };
 
+  let menuRef = useRef()
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setClickToUser(false)
+      }
+    })
+  })
+
   const [clickToCallBack, setClickToCallBack] = useState(false);
   const [clickToMenu, setClickToMenu] = useState(false);
-  const handleClickCall = () => {
+  const handleClickCall = (e) => {
     if (clickToMenu) {
       setClickToMenu(!clickToMenu);
       setClickToCallBack(!clickToCallBack);
@@ -195,7 +207,7 @@ const HeaderLayout = () => {
             <ul className="nav-list d-flex ai-center">
               <li
                 className={clickToCallBack ? "" : "opacity"}
-                onClick={handleClickCall}
+                onClick={(e) => handleClickCall(e)}
               >
                 Обратный звонок
               </li>
@@ -228,11 +240,11 @@ const HeaderLayout = () => {
               </li>
             </ul>
 
-            <ul className={`dropdown-menu ${clickToUser ? "active" : ""} `}>
+            <ul ref={menuRef} className={`dropdown-menu ${clickToUser ? "active" : ""} `}>
               {dropdownMenu.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink to={item.src} className="d-flex ai-center">
+                    <NavLink onClick={() => setClickToUser(false)} to={item.src} className="d-flex ai-center">
                       {item.svg}
                       <span className="ml-10"> {item.name} </span>
                     </NavLink>

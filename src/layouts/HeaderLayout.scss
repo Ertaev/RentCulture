@@ -64,15 +64,16 @@ header {
     .dropdown-menu {
       position: absolute;
       right: 0;
-      top: 40px;
+      top: -4000px;
       padding: 10px 0;
       background: #f6f6f6;
       border-radius: 10px;
       min-width: 280px;
       color: #000;
       opacity: 0;
-      transition: opacity .5s ease;
+      transition: opacity .5s ease-in-out;
       &.active {
+        top: 40px;
         opacity: 1;
       }
       li {

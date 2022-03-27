@@ -38,7 +38,8 @@
 }
 @media (max-width: 1200px) {
   .page-wrap {
-    height: calc(100vh - 88px);
+    height: 100vh;
+    // height: calc(100vh - 88px);
   }
 }
 

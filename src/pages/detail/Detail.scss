@@ -1,0 +1,88 @@
+.content.page-wrap {
+  height: 100vh;
+
+  .page-wrap__content {
+    background: #EDEDED;
+    padding: 0;
+  }
+  li {
+    font-size: 24px;
+    cursor: pointer;
+    &.active {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #000;
+  }
+
+  .desc {
+    width: 50%;
+    height: 100%;
+    padding: 20px 60px 20px 0;
+    flex-direction: column;
+
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .info {
+      flex: 1;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      background-color: #1FB724;
+      border-radius: 50%;
+    }
+    span {
+      margin-left: 10px;
+    }
+    h4 {
+      font-size: 20px;
+      color: #000;
+    }
+  }
+  .char {
+    width: 50%;
+    height: 100%;
+    padding: 20px 60px 20px 0;
+    flex-direction: column;
+    color: #000;
+    ul {
+      margin-top: 20px;
+      li {
+        cursor: inherit;
+        font-size: 16px;
+      }
+      span {
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.detail-carousel {
+  width: 50%;
+  height: 100%;
+  div {
+    padding: 0;
+    img {
+      height: 100%;
+      margin-left: -40px;
+    }
+  }
+  button {
+    z-index: 1!important;
+  }
+  .react-multiple-carousel__arrow--right {
+    right: calc(1% + 1px)!important;
+  }
+  .react-multiple-carousel__arrow--left {
+    left: calc(1% + 1px)!important;
+  }
+}

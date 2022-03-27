@@ -7,6 +7,7 @@ import HeaderLayout from "./layouts/HeaderLayout";
 import Home from "./pages/home/Home";
 import Autopark from "./pages/autopark/Autopark";
 import Orders from "./pages/orders/Orders";
+import Detail from "./pages/detail/Detail";
 import LogIn from "./pages/logIn/LogIn";
 
 import "slick-carousel/slick/slick.css";
@@ -77,6 +78,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HeaderLayout />}>
           <Route index element={<Home />} />
+
           <Route
             path="autopark"
             element={
@@ -93,7 +95,9 @@ function App() {
           />
           <Route path="orders" element={<Orders />} />
 
+          <Route path={`/cars/:id`} element={<Detail />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="/*" element={<LogIn />} />
         </Route>
       </Routes>
     </MainContext.Provider>

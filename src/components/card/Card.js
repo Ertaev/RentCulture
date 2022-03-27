@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
+import { useNavigate, UseNavigate } from "react-router-dom";
 
 import "./Card.scss";
 import Button from "../button/Button";
@@ -17,6 +18,8 @@ const Card = ({
   loading = false,
 }) => {
   const { wasAdded } = useContext(MainContext)
+  const navigate = useNavigate()
+  const itemURL = () => navigate(`/cars/${id}`)
 
   const clickToAdd = () => {
     onPlus({ id, parentId: id, title, img, price, year });
@@ -59,7 +62,7 @@ const Card = ({
 
           <p> {price} т/сутки</p>
 
-          <Button name={"Подробнее"} src={"/"} />
+          <button onClick={itemURL} className="btn" id={id} > Подробнее </button>
         </>
       )}
     </div>

@@ -12,24 +12,33 @@ const Autopark = () => {
   const [index, setIndex] = useState(0);
 
   const [tabIndex, setTabIndex] = useState(0);
+
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3,
+      partialVisibilityGutter: 40
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 1,
+      partialVisibilityGutter: 30
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2,
+      partialVisibilityGutter: 30
     }
-  };
+  }
 
   return (
     <div className="autopark page-wrap">
@@ -154,47 +163,11 @@ const Autopark = () => {
 
         <div className={`slides-wrapper ${tabIndex ? "d-flex" : "d-none"}`}>
         <Carousel
-          additionalTransfrom={0}
-          arrows
           autoPlaySpeed={3000}
-          centerMode={false}
           containerClass="container"
-          draggable
-          focusOnSelect={false}
           infinite
-          keyBoardControl
-          minimumTouchDrag={80}
-          renderButtonGroupOutside={false}
-          renderDotsOutside={false}
-          responsive={{
-            desktop: {
-              breakpoint: {
-                max: 3000,
-                min: 1024
-              },
-              items: 3,
-              partialVisibilityGutter: 40
-            },
-            mobile: {
-              breakpoint: {
-                max: 464,
-                min: 0
-              },
-              items: 1,
-              partialVisibilityGutter: 30
-            },
-            tablet: {
-              breakpoint: {
-                max: 1024,
-                min: 464
-              },
-              items: 2,
-              partialVisibilityGutter: 30
-            }
-          }}
-          showDots={false}
+          responsive={responsive}
           slidesToSlide={1}
-          swipeable
         >
           <div>
             <h4>
