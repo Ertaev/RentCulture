@@ -5,10 +5,31 @@ import kia from "../../assets/img/kia.png";
 import skoda from "../../assets/img/skoda.png";
 import Button from "../button/Button";
 
+import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+
 const Autopark = () => {
   const [index, setIndex] = useState(0);
 
   const [tabIndex, setTabIndex] = useState(0);
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 
   return (
     <div className="autopark page-wrap">
@@ -132,7 +153,122 @@ const Autopark = () => {
         </div>
 
         <div className={`slides-wrapper ${tabIndex ? "d-flex" : "d-none"}`}>
-          <p>Slider</p>
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlaySpeed={3000}
+          centerMode={false}
+          containerClass="container"
+          draggable
+          focusOnSelect={false}
+          infinite
+          keyBoardControl
+          minimumTouchDrag={80}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024
+              },
+              items: 3,
+              partialVisibilityGutter: 40
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0
+              },
+              items: 1,
+              partialVisibilityGutter: 30
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464
+              },
+              items: 2,
+              partialVisibilityGutter: 30
+            }
+          }}
+          showDots={false}
+          slidesToSlide={1}
+          swipeable
+        >
+          <div>
+            <h4>
+              Спецаильные возможности
+            </h4>
+            <ul>
+              <li>клиент должен быть старше 21 года</li>
+              <li>водительский стаж должен составлять минимум 3 года</li>
+            </ul>
+            <p>
+              Если водитель не соответствует данным требованиям, компания может предложить увеличение суммы залога.
+            </p>
+          </div>
+          <div>
+            <h4>
+              Необходимые документы
+            </h4>
+            <p>
+              Для аренды автомобиля гражданину РК понадобятся паспорт и водительское удостоверение с правом управления транспортным средством соответствующей категории.
+
+              Для заключения договора аренды иностранец должен предоставить национальный паспорт и международные права или водительское удостоверение, в котором имя и фамилия указаны латиницей.
+            </p>
+          </div>
+          <div>
+            <h4>
+              Срок аренды
+            </h4>
+            <p>
+              Минимальный срок аренды автомобиля составляет 24 часа. Началом отсчета срока аренды принято считать момент подписания акта приема-передачи транспортного средства.
+
+              Возврат авто должен быть произведен не позднее чем через 1 час с момента окончания последних суток проката. При опоздании сдачи авто менее чем на три часа, взимается плата 20% от суточной стоимости авто за каждый час опоздания, при опоздании более чем на три часа оплачиваются как следующие сутки.
+            </p>
+          </div>
+          <div>
+            <h4>
+              React Carousel with Server Side Rendering Support – Part 1"
+            </h4>
+            <p>
+              w3js.com - web front-end studio"
+            </p>
+          </div>
+          <div>
+            <h4>
+              React Carousel with Server Side Rendering Support – Part 1"
+            </h4>
+            <p>
+              w3js.com - web front-end studio"
+            </p>
+          </div>
+          <div>
+            <h4>
+              Appending currency sign to a purchase form in your e-commerce site using plain JavaScript."
+            </h4>
+            <p>
+              w3js.com - web front-end studio"
+            </p>
+          </div>
+          <div>
+            <h4>
+              Appending currency sign to a purchase form in your e-commerce site using plain JavaScript."
+            </h4>
+            <p>
+              w3js.com - web front-end studio"
+            </p>
+          </div>
+          <div>
+            <h4>
+              React Carousel with Server Side Rendering Support – Part 1"
+            </h4>
+            <p>
+              w3js.com - web front-end studio"
+            </p>
+          </div>
+        </Carousel>
         </div>
       </div>
     </div>

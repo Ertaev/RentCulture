@@ -73,7 +73,7 @@ function App() {
   }
 
   return (
-    <MainContext.Provider value={{ items, cartItems, wasAdded, setCartOpened, setCartItems }}>
+    <MainContext.Provider value={{ items, cartItems, wasAdded, setCartOpened, setCartItems, addCarToCart }}>
       <Routes>
         <Route path="/" element={<HeaderLayout />}>
           <Route index element={<Home />} />
@@ -88,7 +88,6 @@ function App() {
                 deleteCarCart={deleteCarCart}
                 onChangeSearchInput={onChangeSearchInput}
                 isLoading={isLoading}
-                addCarToCart={addCarToCart}
               />
             }
           />

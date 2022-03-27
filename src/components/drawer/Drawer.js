@@ -38,6 +38,7 @@ const Drawer = ({ onCLose, deleteCar, opened }) => {
           <img className="remove" src={remove} alt="close" onClick={onCLose} />
         </div>
 
+
         {cartItems.length > 0 ? (
           <>
             <div className="items">
@@ -65,6 +66,7 @@ const Drawer = ({ onCLose, deleteCar, opened }) => {
               })}
             </div>
 
+            <Button name={"Оформить заказ"} src={"/orders"} />
             <button disabled={isLoading} className="btn" onClick={onClickToOrder}>Оформить заказ</button>
           </>
         ) : (

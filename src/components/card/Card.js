@@ -19,7 +19,7 @@ const Card = ({
   const { wasAdded } = useContext(MainContext)
 
   const clickToAdd = () => {
-    onPlus({ id, parentId: id, title, img, price });
+    onPlus({ id, parentId: id, title, img, price, year });
   };
 
   return (
@@ -50,9 +50,11 @@ const Card = ({
               {title}, {year}
             </h3>
 
-            <button onClick={clickToAdd}>
+            {
+              onPlus && <button onClick={clickToAdd}>
               <img src={wasAdded(id) ? added : add} alt="1" />
             </button>
+            }
           </div>
 
           <p> {price} т/сутки</p>

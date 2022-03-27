@@ -17,10 +17,9 @@ const Autopark = ({
   deleteCarCart,
   onChangeSearchInput,
   isLoading,
-  addCarToCart
 }) => {
 
-  const { items } = useContext(MainContext);
+  const { items, addCarToCart } = useContext(MainContext);
 
   const renderItems = () => {
     const filtredItems = items.filter((item) =>

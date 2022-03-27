@@ -1,18 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
+import Card from '../../components/card/Card'
+import MainContext from "../../context/MainContext";
+
 const Orders = () => {
-  const [orders, setOrders] = useState([])
+  const { cartItems, setCartItems, addCarToCart } = useContext(MainContext)
+  const [isCompleted, setIsComplete] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
-  useEffect(() => {
-    async function getOrders() {
-      const { data } = await axios.get("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/orders")
-
-      console.log(data);
+  const onClickToOrder = () => {
+    setIsLoading(true)
+    axios.post("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/orders", cartItems);
+    setIsComplete(true)
+    setCartItems([])
+    // axios.put("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart", []);
+    for (let i = 0; i < cartItems.length; i++) {
+      const item = cartItems[i]
+      axios.delete("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart/" + item.id);
+      delay(1000);
     }
-
-    getOrders()
-  }, [])
+    setIsLoading(false)
+  }
 
   return (
     <div className="content container">
@@ -21,7 +32,15 @@ const Orders = () => {
       </div>
 
       <div className="cars">
-
+        {cartItems.map((item, index) => {
+          return (
+            <Card
+              key={index}
+              // onPlus={(obj) => addCarToCart(obj)}
+              {...item}
+            />
+          );
+        })}
       </div>
     </div>
   )
