@@ -177,6 +177,8 @@ const HeaderLayout = () => {
         <BurgerMenu
           clickToCallBack={clickToCallBack}
           clickToMenu={clickToMenu}
+          setClickToCallBack={setClickToCallBack}
+          setClickToMenu={setClickToMenu}
         />
 
         <div className="header d-flex ai-center jc-between">

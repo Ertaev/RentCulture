@@ -10,7 +10,6 @@ import Carousel from 'react-multi-carousel';
 
 const Autopark = () => {
   const [index, setIndex] = useState(0);
-
   const [tabIndex, setTabIndex] = useState(0);
 
   const responsive = {
