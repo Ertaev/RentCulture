@@ -10,9 +10,6 @@ import Orders from "./pages/orders/Orders";
 import Detail from "./pages/detail/Detail";
 import LogIn from "./pages/logIn/LogIn";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 function App() {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);

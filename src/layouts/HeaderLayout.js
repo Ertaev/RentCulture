@@ -5,8 +5,6 @@ import BurgerMenu from "../components/burgerMenu/BurgerMenu";
 import Button from "../components/button/Button";
 import BurgerIcon from "../components/burgerIcons/BurgerIcon";
 
-import useModal from "../hooks/useModal";
-
 import "./HeaderLayout.scss";
 
 const HeaderLayout = () => {
@@ -127,19 +125,21 @@ const HeaderLayout = () => {
 
   const [clickToUser, setClickToUser] = useState(false);
 
-  const openDropdownMenu = () => {
-    setClickToUser(!clickToUser);
-  };
+    const openDropdownMenu = () => {
+      setClickToUser(!clickToUser);
+    };
 
   let menuRef = useRef()
 
   useEffect(() => {
     document.addEventListener("mousedown", (event) => {
       if (!menuRef.current.contains(event.target)) {
+        console.log(event.target);
+        console.log(!menuRef.current.contains(event.target));
         setClickToUser(false)
       }
     })
-  })
+  }, [])
 
   const [clickToCallBack, setClickToCallBack] = useState(false);
   const [clickToMenu, setClickToMenu] = useState(false);
