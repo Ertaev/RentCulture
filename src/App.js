@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 
 import MainContext from "./context/MainContext";
 import HeaderLayout from "./layouts/HeaderLayout";
@@ -8,7 +8,9 @@ import Home from "./pages/home/Home";
 import Autopark from "./pages/autopark/Autopark";
 import Orders from "./pages/orders/Orders";
 import Detail from "./pages/detail/Detail";
-import LogIn from "./pages/logIn/LogIn";
+import SignIn from "./pages/logIn/SignIn";
+import SignUp from "./pages/logIn/SignUp";
+import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -42,7 +44,9 @@ function App() {
   }, []);
 
   const addCarToCart = async (obj) => {
-    const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
+    const findItem = cartItems.find(
+      (item) => Number(item.parentId) === Number(obj.id)
+    );
     if (findItem) {
       setCartItems((prev) =>
         prev.filter((item) => Number(item.parentId) !== Number(obj.id))
@@ -51,7 +55,10 @@ function App() {
         `https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart/${findItem.id}`
       );
     } else {
-      const { data } = await axios.post("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart", obj);
+      const { data } = await axios.post(
+        "https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart",
+        obj
+      );
       setCartItems((prev) => [...prev, data]);
     }
   };
@@ -59,7 +66,9 @@ function App() {
   const deleteCarCart = (id) => {
     axios.delete(`https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart/${id}`);
 
-    setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
+    setCartItems((prev) =>
+      prev.filter((item) => Number(item.id) !== Number(id))
+    );
   };
 
   const onChangeSearchInput = (e) => {
@@ -68,10 +77,19 @@ function App() {
 
   const wasAdded = (id) => {
     return cartItems.some((obj) => Number(obj.parentId) === Number(id));
-  }
+  };
 
   return (
-    <MainContext.Provider value={{ items, cartItems, wasAdded, setCartOpened, setCartItems, addCarToCart }}>
+    <MainContext.Provider
+      value={{
+        items,
+        cartItems,
+        wasAdded,
+        setCartOpened,
+        setCartItems,
+        addCarToCart,
+      }}
+    >
       <Routes>
         <Route path="/" element={<HeaderLayout />}>
           <Route index element={<Home />} />
@@ -93,8 +111,9 @@ function App() {
           <Route path="orders" element={<Orders />} />
 
           <Route path={`/cars/:id`} element={<Detail />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="/*" element={<LogIn />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </MainContext.Provider>

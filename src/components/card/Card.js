@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
-import { useNavigate, UseNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Card.scss";
 import Button from "../button/Button";
@@ -11,7 +11,7 @@ import MainContext from "../../context/MainContext";
 const Card = ({
   id,
   title,
-  img,
+  images,
   price,
   year,
   onPlus,
@@ -22,7 +22,7 @@ const Card = ({
   const itemURL = () => navigate(`/cars/${id}`)
 
   const clickToAdd = () => {
-    onPlus({ id, parentId: id, title, img, price, year });
+    onPlus({ id, parentId: id, title, images, price, year });
   };
 
   return (
@@ -45,7 +45,7 @@ const Card = ({
       ) : (
         <>
           <div className="img">
-            <img src={img} alt="1" />
+            <img src={images[0]} alt="1" />
           </div>
 
           <div className="card-info d-flex ai-center jc-between">

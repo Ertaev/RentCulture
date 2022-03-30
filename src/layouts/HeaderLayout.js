@@ -125,25 +125,13 @@ const HeaderLayout = () => {
 
   const [clickToUser, setClickToUser] = useState(false);
 
-    const openDropdownMenu = () => {
-      setClickToUser(!clickToUser);
-    };
-
-  let menuRef = useRef()
-
-  useEffect(() => {
-    document.addEventListener("mousedown", (event) => {
-      if (!menuRef.current.contains(event.target)) {
-        console.log(event.target);
-        console.log(!menuRef.current.contains(event.target));
-        setClickToUser(false)
-      }
-    })
-  }, [])
+  const openDropdownMenu = () => {
+    setClickToUser(!clickToUser);
+  };
 
   const [clickToCallBack, setClickToCallBack] = useState(false);
   const [clickToMenu, setClickToMenu] = useState(false);
-  const handleClickCall = (e) => {
+  const handleClickCall = () => {
     if (clickToMenu) {
       setClickToMenu(!clickToMenu);
       setClickToCallBack(!clickToCallBack);
@@ -152,13 +140,25 @@ const HeaderLayout = () => {
     }
   };
   const handleClickMenu = () => {
-    if (clickToCallBack) {
-      setClickToCallBack(!clickToCallBack);
-      setClickToMenu(!clickToMenu);
-    } else {
-      setClickToMenu(!clickToMenu);
-    }
+    setClickToMenu(!clickToMenu);
   };
+
+  let dropDownRef = useRef();
+  let callRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      if (!dropDownRef.current.contains(event.target)) {
+        setClickToUser(false);
+      }
+    });
+
+    document.addEventListener("mousedown", (event) => {
+      if (!callRef.current.contains(event.target)) {
+        setClickToCallBack(false);
+      }
+    });
+  }, []);
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -182,15 +182,6 @@ const HeaderLayout = () => {
         />
 
         <div className="header d-flex ai-center jc-between">
-          {/* <a className={ clickToCallBack ? "call" : "call opacity"} onClick={handleClickCall}>Обратный звонок</a> */}
-          <NavLink
-            to="/"
-            className={clickToCallBack ? "call" : "call opacity"}
-            onClick={handleClickCall}
-          >
-            Обратный звонок
-          </NavLink>
-
           <ul className="nav-menu d-flex">
             {navList.map((navItem, index) => {
               return (
@@ -205,19 +196,21 @@ const HeaderLayout = () => {
 
           <NavLink to="/" className="logo"></NavLink>
 
-          <div className="nav d-flex">
+          <div className="nav d-flex ai-center">
+            <NavLink
+              to="/"
+              ref={callRef}
+              className={clickToCallBack ? "" : "opacity"}
+              onClick={handleClickCall}
+            >
+              Обратный звонок
+            </NavLink>
             <ul className="nav-list d-flex ai-center">
-              <li
-                className={clickToCallBack ? "" : "opacity"}
-                onClick={(e) => handleClickCall(e)}
-              >
-                Обратный звонок
-              </li>
               <li>
                 <a href="tel: +7-777-424-24-24">+7-777-424-24-24</a>
               </li>
-              <li className="user" onClick={openDropdownMenu}>
-                <div className="d-flex ai-center">
+              <li className="user">
+                {/* <div className="d-flex ai-center" onClick={openDropdownMenu}>
                   <div
                     className="avatar mr-10"
                     style={{ backgroundImage: `` }}
@@ -237,16 +230,23 @@ const HeaderLayout = () => {
                       fillRule="evenodd"
                     ></path>
                   </svg>
-                </div>
-                {/* <Button name={"Войти"} src={"login"} /> */}
+                </div> */}
+                <Button name={"Войти"} src={"login"} />
               </li>
             </ul>
 
-            <ul ref={menuRef} className={`dropdown-menu ${clickToUser ? "active" : ""} `}>
+            <ul
+              ref={dropDownRef}
+              className={`dropdown-menu ${clickToUser ? "active" : ""} `}
+            >
               {dropdownMenu.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink onClick={() => setClickToUser(false)} to={item.src} className="d-flex ai-center">
+                    <NavLink
+                      onClick={() => setClickToUser(false)}
+                      to={item.src}
+                      className="d-flex ai-center"
+                    >
                       {item.svg}
                       <span className="ml-10"> {item.name} </span>
                     </NavLink>

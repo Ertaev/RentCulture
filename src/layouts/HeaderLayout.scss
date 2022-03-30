@@ -43,9 +43,7 @@ header {
     .nav-list {
       li {
         cursor: pointer;
-        & + li {
-          margin-left: 20px;
-        }
+        margin-left: 20px;
       }
     }
     .user {
@@ -123,12 +121,15 @@ header {
       display: block;
     }
     
-    .nav-menu li, .nav {
+    .nav-menu li, .nav-list {
       display: none;
     }
 
     .burger {
       display: block;
+    }
+    .nav {
+      position: absolute;
     }
   }
 }

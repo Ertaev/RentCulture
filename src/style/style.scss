@@ -79,6 +79,9 @@ button {
 }
 
 input, textarea {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  border-bottom: 1px solid #979797!important;
   border: none;
   outline: none;
   resize: none;
@@ -117,9 +120,6 @@ input, textarea {
 
 .d-flex {
   display: flex;
-}
-.d-grid {
-  display: grid;
 }
 .d-none {
   display: none;
