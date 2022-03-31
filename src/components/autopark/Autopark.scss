@@ -111,7 +111,7 @@
     background: #fff;
   }
   .react-multi-carousel-item div {
-    padding: 60px 20px 0 40px;
+    padding: 60px 40px 0 20px;
     h4 {
       color: #000;
     }
@@ -158,6 +158,20 @@
         }
       }
     }
+    .react-multi-carousel-item div {
+      padding: 20px 40px 0 20px;
+    }
+  }
+  .autopark.page-wrap .react-multiple-carousel__arrow {
+    min-width: 35px;
+    min-height: 35px;
+    top: 0;
+  }
+  .autopark.page-wrap .react-multiple-carousel__arrow--left {
+    right: 7%!important;
+  }
+  .react-multiple-carousel__arrow--right {
+    right: 1%!important;
   }
 }
 
@@ -196,6 +210,16 @@
         }
       }
     }
+    .react-multi-carousel-item div {
+      padding: 20px 40px 20px 20px;
+    }
+  }
+  .autopark.page-wrap .react-multiple-carousel__arrow {
+    top: inherit;
+  }
+  .autopark.page-wrap .react-multiple-carousel__arrow--left {
+    right: inherit!important;
+    left: 1%!important;
   }
 }
 
