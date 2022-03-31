@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./Card.scss";
 import Button from "../button/Button";
@@ -16,10 +16,10 @@ const Card = ({
   year,
   onPlus,
   loading = false,
+  name,
+  surname
 }) => {
-  const { wasAdded } = useContext(MainContext)
-  const navigate = useNavigate()
-  const itemURL = () => navigate(`/cars/${id}`)
+  const { wasAdded } = useContext(MainContext);
 
   const clickToAdd = () => {
     onPlus({ id, parentId: id, title, images, price, year });
@@ -28,42 +28,31 @@ const Card = ({
   return (
     <div className="card">
       {loading ? (
-        <div> <p>Загрузка</p> </div>
-        // <ContentLoader
-        //   speed={2}
-        //   width={380}
-        //   height={430}
-        //   viewBox="0 0 400 460"
-        //   backgroundColor="#f3f3f3"
-        //   foregroundColor="#ecebeb"
-        // >
-        //   <rect x="0" y="0" rx="20" ry="20" width="380" height="254" />
-        //   <rect x="0" y="300" rx="10" ry="10" width="260" height="28" />
-        //   <rect x="348" y="300" rx="10" ry="10" width="32" height="32" />
-        //   <rect x="0" y="370" rx="10" ry="10" width="150" height="28" />
-        // </ContentLoader>
+        <p className="d-flex jc-center">Загрузка</p>
       ) : (
-        <>
-          <div className="img">
-            <img src={images[0]} alt="1" />
+        <NavLink to={`/cars/${id}`}>
+          <img src={images[0]} alt="1" />
+          <div className="card-overlay">
+            <div className="card__header">
+              <div
+                className="avatar mr-15"
+                style={{ backgroundImage: `` }}
+              ></div>
+
+              <div className="card__header-text">
+                <p className="card__title"> {name} </p>
+                <p className="card__title"> {surname} </p>
+              </div>
+
+              <div className="card__header-text" style={{marginLeft:"auto", textAlign:"right"}}>
+                <p className="card__title"> {title} </p>
+                <p className="card__status"> {year} </p>
+              </div>
+            </div>
+
+            <p className="card__description"> {price} т/сутки </p>
           </div>
-
-          <div className="card-info d-flex ai-center jc-between">
-            <h3>
-              {title}, {year}
-            </h3>
-
-            {
-              onPlus && <button onClick={clickToAdd}>
-              <img src={wasAdded(id) ? added : add} alt="1" />
-            </button>
-            }
-          </div>
-
-          <p> {price} т/сутки</p>
-
-          <button onClick={itemURL} className="btn" id={id} > Подробнее </button>
-        </>
+        </NavLink>
       )}
     </div>
   );

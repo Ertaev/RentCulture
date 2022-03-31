@@ -1,51 +1,67 @@
 .card {
+  position: relative;
   background: #fff;
-  padding: 20px 20px 0;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
   transition: transform .2s ease-in-out;
   margin-bottom: 30px;
-  &:hover {
-    transform: translateY(-5px);
-  }  
-  h3 {
-    color: #000;
-    font-size: 24px;
-    line-height: 28px;
-    font-weight: 400;
-  }
+  height: 250px;
+  overflow: hidden;
 
-  .card-info {
-    position: relative;
-    margin-bottom: 30px;
-    &::after {
-      content: "";
-      position: absolute;
-      width: calc(100% + 40px);
-      height: 2px;
-      background: #D7D7D7;
-      left: -20px;
-      bottom: -15px;
-    }
-  }
   img {
     width: 100%;
-    display: block;
+    border-radius: 20px;
+    height: 100%;
   }
-  .img {
-    margin-bottom: 40px;
-    img {
-      border-radius: 20px;
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    transform: translateY(100%);
+    transition: .5s ease-in-out;
+    border-radius: 20px 20px 0 0;
+
+    .card__header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 20px 0 0 0;
+      background-color: #fff;
+      transform: translateY(-100%);
+      transition: .5s ease-in-out;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+      button {
+        z-index: 1;
+        margin-left: auto;
+        background: #fff;
+        img {
+          border-radius: 0;
+        }
+      }
+    }
+
+    .card__description {
+      padding: 20px;
     }
   }
-  p {
-    font-family: "Merriweather", sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 20px;
+
+  &:hover {
+    .card-overlay {
+      transform: translateY(0);
+    }
+    .card__header {
+      transform: translateY(0);
+    }
   }
-  .btn {
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    border-radius: 0 0 20px 20px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 360px;
+    margin: 0 auto;
   }
 }

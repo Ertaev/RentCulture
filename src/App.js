@@ -14,10 +14,18 @@ import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [cartOpened, setCartOpened] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [page, setPage] = useState(1)
+  const [cartsInPage] = useState(6)
+
+  const currentPage = (e) => {
+    setPage(e.target.innerHTML)
+  }
 
   if (cartOpened) {
     document.querySelector("body").style.overflow = "hidden";
@@ -31,17 +39,21 @@ function App() {
       const cartResponse = await axios.get(
         "https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart"
       );
+      const allItemsResponse = await axios.get(
+        `https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cars/`
+      );
       const itemsResponse = await axios.get(
-        "https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cars"
+        `https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cars/?p=${page}&l=${cartsInPage}`
       );
 
       setIsLoading(false);
 
       setCartItems(cartResponse.data);
       setItems(itemsResponse.data);
+      setAllItems(allItemsResponse.data);
     }
     fetchData();
-  }, []);
+  }, [page]);
 
   const addCarToCart = async (obj) => {
     const findItem = cartItems.find(
@@ -83,6 +95,7 @@ function App() {
     <MainContext.Provider
       value={{
         items,
+        allItems,
         cartItems,
         wasAdded,
         setCartOpened,
@@ -105,6 +118,9 @@ function App() {
                 deleteCarCart={deleteCarCart}
                 onChangeSearchInput={onChangeSearchInput}
                 isLoading={isLoading}
+                currentPage={currentPage}
+                cartsInPage={cartsInPage}
+                page={page}
               />
             }
           />

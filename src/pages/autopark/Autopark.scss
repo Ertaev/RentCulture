@@ -29,6 +29,22 @@
 
 }
 
+.pagination {
+  background: #f6f6f6;
+  padding-bottom: 40px;
+  li {
+    padding: 15px 15px 10px 15px;
+    color: #000;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    &:hover {
+      border-bottom: 2px solid #1FB724;
+    }
+  }
+  .active {
+    border-bottom: 2px solid #1FB724;
+  }
+}
 
 
 .remove {
@@ -65,4 +81,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .autopark {
+    .content {
+      .header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .search-block {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 460px) {
+  .content .cars {
+    margin: 0 -20px;
+  }
 }

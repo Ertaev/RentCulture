@@ -7,7 +7,7 @@ header {
 
   &.bg {
     background: #000;
-    opacity: .95;
+    // opacity: .95;
   }
 
   .hide {
@@ -40,6 +40,10 @@ header {
   }
   .nav {
     position: relative;
+    p {
+      color: #fff;
+      cursor: pointer;
+    }
     .nav-list {
       li {
         cursor: pointer;
@@ -90,12 +94,12 @@ header {
     padding: 5px 25px;
   }
 
-  .avatar {
-    width: 32px;
-    height: 32px;
-    background-color: #1FB724;
-    border-radius: 50%;
-  }
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #1FB724;
+  border-radius: 50%;
 }
 
 @media (max-width: 1200px) {

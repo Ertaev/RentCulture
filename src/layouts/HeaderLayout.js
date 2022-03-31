@@ -146,7 +146,7 @@ const HeaderLayout = () => {
   let dropDownRef = useRef();
   let callRef = useRef();
 
-  useEffect(() => {
+  useEffect(() => {  // удалить useEffect
     document.addEventListener("mousedown", (event) => {
       if (!dropDownRef.current.contains(event.target)) {
         setClickToUser(false);
@@ -197,14 +197,13 @@ const HeaderLayout = () => {
           <NavLink to="/" className="logo"></NavLink>
 
           <div className="nav d-flex ai-center">
-            <NavLink
-              to="/"
+            <p
               ref={callRef}
               className={clickToCallBack ? "" : "opacity"}
               onClick={handleClickCall}
             >
               Обратный звонок
-            </NavLink>
+            </p>
             <ul className="nav-list d-flex ai-center">
               <li>
                 <a href="tel: +7-777-424-24-24">+7-777-424-24-24</a>

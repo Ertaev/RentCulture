@@ -17,9 +17,18 @@ const Autopark = ({
   deleteCarCart,
   onChangeSearchInput,
   isLoading,
+  currentPage,
+  cartsInPage,
+  page
 }) => {
 
-  const { items, addCarToCart } = useContext(MainContext);
+  const { items, addCarToCart, allItems } = useContext(MainContext);
+
+  const pageNumbers = []
+
+  for (let i = 1; i <= Math.ceil(allItems.length/cartsInPage); i++) {
+    pageNumbers.push(i)
+  }
 
   const renderItems = () => {
     const filtredItems = items.filter((item) =>
@@ -71,7 +80,19 @@ const Autopark = ({
           </div>
         </div>
 
-        <div className="cars">{renderItems()}</div>
+        <div className="cars">
+          {renderItems()}
+        </div>
+
+        <ul className="pagination d-flex ai-center jc-center">
+          {
+            pageNumbers.map(number => {
+              return (
+                <li onClick={currentPage} className={ page == number ? "active" : ""} key={number}> {number} </li>
+              )
+            })
+          }
+        </ul>
       </div>
     </div>
   );

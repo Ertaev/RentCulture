@@ -189,4 +189,9 @@ body {
     padding-left: 20px;
     padding-right: 20px;
   }
+  .content {
+    .cars {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
