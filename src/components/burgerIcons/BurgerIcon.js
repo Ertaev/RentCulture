@@ -1,18 +1,24 @@
 import React from "react";
 
-import FaBars from "./FaBars";
-import FaTimes from "./FaTimes";
+import "./BurgerIcon.scss";
 
-import "./BurgerIcon.scss"
-
-const BurgerIcon = ({ handleClickCall, clickToCallBack, handleClickMenu, clickToMenu }) => {
-  const handleClickToClose = () => clickToCallBack ? handleClickCall() : handleClickMenu();
-
+const BurgerIcon = ({ onClick, menuName }) => {
   return (
-    <div className='burger'>
-      {clickToCallBack || clickToMenu ? <FaTimes handleClickToClose={handleClickToClose} /> : <FaBars handleClickMenu={handleClickMenu} /> }
+    <div className="burger">
+      {menuName && menuName !== "FaTimes" ? (
+        <div className="FaTimes" data-name="FaTimes" onClick={onClick}>
+          <div data-name="FaTimes"></div>
+          <div data-name="FaTimes"></div>
+        </div>
+      ) : (
+        <div className="FaBars" data-name="FaBars" onClick={onClick}>
+          <div data-name="FaBars"></div>
+          <div data-name="FaBars"></div>
+          <div data-name="FaBars"></div>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default BurgerIcon
+export default BurgerIcon;

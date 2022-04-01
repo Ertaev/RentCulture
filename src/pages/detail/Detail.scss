@@ -1,16 +1,14 @@
-.content.page-wrap {
+.detail.content.page-wrap {
   height: 100vh;
 
   .page-wrap__content {
     background: #EDEDED;
     padding: 0;
   }
-  li {
+  .nav-tab {
     font-size: 24px;
     cursor: pointer;
-    &.active {
-      border-bottom: 1px solid #fff;
-    }
+    margin-right: 30px;
   }
 
   h3 {
@@ -20,16 +18,19 @@
     color: #000;
   }
 
+  p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .rent {
+    font-size: 24px;
+  }
   .desc {
     width: 50%;
     height: 100%;
     padding: 20px 60px 20px 0;
     flex-direction: column;
-
-    p {
-      font-size: 14px;
-      line-height: 20px;
-    }
+    
     .info {
       flex: 1;
     }
@@ -64,6 +65,46 @@
       }
     }
   }
+
+  
+  .services {
+    width: 50%;
+    height: 100%;
+    padding: 20px 60px 20px 0;
+    flex-direction: column;
+    .list {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 24px;
+      overflow-y: scroll;
+      padding-right: 10px;
+      &::-webkit-scrollbar {
+        background-color: #000;
+        border-radius: 8px;
+        width: 4px;
+        overflow: hidden;
+      }
+      &::-webkit-scrollbar {
+        background-color: #1fb724;
+        border-radius: 4px;
+      }
+
+      div {
+        padding: 12px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        h4 {
+          font-size: 14px;
+          color: #000;
+        }
+        p {
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
 }
 
 .detail-carousel {
@@ -84,5 +125,24 @@
   }
   .react-multiple-carousel__arrow--left {
     left: calc(1% + 1px)!important;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .detail-carousel {
+    div {
+      display: flex;
+      justify-content: center;
+      img {
+        margin-left: -80px;
+      }
+    }
+  }
+  .detail.content.page-wrap {
+    .desc {
+      width: 80%;
+      padding: 0;
+    }
   }
 }

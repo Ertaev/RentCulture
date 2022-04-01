@@ -7,17 +7,15 @@ import map from "../../assets/img/map.png"
 
 const Main = () => {
   return (
-    <div className='main bg'>
+    <div className='main bg-image'>
       <div className='content container d-flex jc-between'>
-        <div className='contentLeft d-flex jc-between fd-column'>
-          <div>
-            <h1 className="mb-25">
-              ОБЪЕДИНЯЕМ <br /> <span> МАШИНЫ И ЛЮДЕЙ </span>
-            </h1>
-            <h4>
-              Компания предоставляет возможность арендовать или сдать автомобиль . Путешествуйте!
-            </h4>
-          </div>
+        <div className='header d-flex jc-between fd-column'>
+          <h1 className="mb-25">
+            ОБЪЕДИНЯЕМ <br /> <span> МАШИНЫ И ЛЮДЕЙ </span>
+          </h1>
+          <h4>
+            Компания предоставляет возможность арендовать или сдать автомобиль . Путешествуйте!
+          </h4>
 
           <Button name={"Арендовать автомобиль"} src="autopark" />
         </div>

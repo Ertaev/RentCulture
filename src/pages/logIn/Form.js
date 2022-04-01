@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 
-const Form = ({ title, handleClick }) => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+const Form = ({ title, handleClick, createForm, form }) => {
+  // const [email, setEmail] = useState("");
+  // const [pass, setPass] = useState("");
 
   return (
     <form className="d-flex fd-column ai-center jc-center form" onSubmit={e => e.preventDefault()}>
       <input
         type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={form.email}
+        onChange={createForm}
         placeholder="E-mail"
+        name="email"
       />
       <input
         type="password"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={form.password}
+        onChange={createForm}
         placeholder="Пароль"
+        name="password"
       />
-      <button type="submit" onClick={(e) => handleClick(email, pass)}>
+      <button type="submit" onClick={e => handleClick(e)}>
         {title}
       </button>
     </form>

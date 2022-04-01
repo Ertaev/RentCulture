@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Menu = ({ clickToMenu }) => {
+import "./Menu.scss"
+
+const DropdownMenu = ({ clickToUser, dropDownRef }) => {
   const dropdownMenu = [
     {
       name: "Мой профиль",
@@ -19,7 +21,7 @@ const Menu = ({ clickToMenu }) => {
           />
         </svg>
       ),
-      src: "/",
+      src: "profile/*",
     },
     {
       name: "Мои заявки",
@@ -99,41 +101,26 @@ const Menu = ({ clickToMenu }) => {
   ];
 
   return (
-    <ul className={clickToMenu ? "menu-list mb-50" : "d-none"}>
-      <ul className="dropdown-menu">
-        {dropdownMenu.map((item, index) => {
-          return (
-            <li key={index}>
-              <NavLink
-                to={item.src}
-                className="d-flex ai-center"
-              >
-                {item.svg}
-                <span className="ml-10"> {item.name} </span>
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-
-      <li className="menu-list__item d-flex jc-between ai-center opacity">
-        <NavLink to={"/autopark"} >Автопарк</NavLink>
-        <span>01</span>
-      </li>
-      <li className="menu-list__item d-flex jc-between ai-center opacity">
-        <a href="">Сдать авто</a>
-        <span>02</span>
-      </li>
-      <li className="menu-list__item d-flex jc-between ai-center opacity">
-        <a href="">О нас</a>
-        <span>03</span>
-      </li>
-      <li className="menu-list__item d-flex jc-between ai-center opacity">
-        <a href="">Контакты</a>
-        <span>04</span>
-      </li>
+    <ul
+      ref={dropDownRef}
+      className={`dropdown-menu ${clickToUser ? "active" : ""} `}
+    >
+      {dropdownMenu.map((item, index) => {
+        return (
+          <li key={index}>
+            <NavLink
+              // onClick={() => setClickToUser(false)}
+              to={item.src}
+              className="d-flex ai-center"
+            >
+              {item.svg}
+              <span className="ml-10"> {item.name} </span>
+            </NavLink>
+          </li>
+        );
+      })}
     </ul>
   );
 };
 
-export default Menu;
+export default DropdownMenu;

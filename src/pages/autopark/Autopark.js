@@ -1,71 +1,42 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../components/card/Card";
-import Drawer from "../../components/drawer/Drawer";
-import MainContext from "../../context/MainContext";
+import useFetch from "../../hooks/useFetch";
 
-import search from "../../assets/img/search.svg";
-import basket from "../../assets/img/basket.svg";
-import remove from "../../assets/img/remove.svg";
+// import search from "../../assets/img/search.svg";
 import "./Autopark.scss";
 
-const Autopark = ({
-  searchValue,
-  setSearchValue,
-  cartOpened,
-  setCartOpened,
-  deleteCarCart,
-  onChangeSearchInput,
-  isLoading,
-  currentPage,
-  cartsInPage,
-  page
-}) => {
-
-  const { items, addCarToCart, allItems } = useContext(MainContext);
-
+const Autopark = () => {
+  const [page, setPage] = useState(1)
+  const [cartsInPage] = useState(6)
+  
+  const items = useFetch("cars");
+  const pagination = useFetch(`cars/?p=${page}&l=${cartsInPage}`);
+ 
   const pageNumbers = []
-
-  for (let i = 1; i <= Math.ceil(allItems.length/cartsInPage); i++) {
-    pageNumbers.push(i)
+  const currentPage = (e) => {
+    setPage(e.target.innerHTML)
   }
 
-  const renderItems = () => {
-    const filtredItems = items.filter((item) =>
-      item.title.toLowerCase().includes(searchValue)
-    );
-    return (isLoading ? [...Array(6)] : filtredItems).map((item, index) => {
-      return (
-        <Card
-          key={index}
-          onPlus={(obj) => addCarToCart(obj)}
-          loading={isLoading}
-          {...item}
-        />
-      );
-    });
-  };
+  if (items[0]) {
+    for (let i = 1; i <= Math.ceil(items[1].length/cartsInPage); i++) {
+      pageNumbers.push(i)
+    }
+  }
+
+  useEffect(() => {
+
+  }, [page])
 
   return (
     <div className="autopark">
-      <div className="basket" onClick={() => setCartOpened(true)}>
-        <img src={basket} alt="basket" />
-      </div>
-
-      <Drawer
-        onCLose={() => setCartOpened(false)}
-        opened={cartOpened}
-        deleteCar={deleteCarCart}
-      />
-
       <div className="content container">
         <div className="header d-flex ai-center jc-between">
           <h1>Автомобили</h1>
 
-          <div className="search-block d-flex">
+          {/* <div className="search-block d-flex">
             <img src={search} alt="search" />
             <input
-              onChange={onChangeSearchInput}
               value={searchValue}
               placeholder="Поиск..."
             />
@@ -77,18 +48,26 @@ const Autopark = ({
                 alt="clear"
               />
             )}
-          </div>
+          </div> */}
         </div>
 
         <div className="cars">
-          {renderItems()}
+          {
+            pagination[0] ? (
+              pagination[1].map((item, index) => {
+                return <Card key={index} {...item} />
+              })
+            ) : (
+              <h2 style={{color:"#000"}}> Загрузка </h2>
+            )
+          }
         </div>
 
         <ul className="pagination d-flex ai-center jc-center">
           {
             pageNumbers.map(number => {
               return (
-                <li onClick={currentPage} className={ page == number ? "active" : ""} key={number}> {number} </li>
+                <li onClick={currentPage} className={ page === number ? "active" : ""} key={number}> {number} </li>
               )
             })
           }
@@ -99,13 +78,3 @@ const Autopark = ({
 };
 
 export default Autopark;
-
-// axios.get("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cars")
-//   .then(res => setItems(res.data))
-
-// axios.get("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cart")
-//   .then(res => setCartItems(res.data))
-
-// fetch("https://6235c9e8eb166c26eb2bf8c7.mockapi.io/cars")
-//   .then((res) => res.json())
-//   .then((json) => setItems(json));
