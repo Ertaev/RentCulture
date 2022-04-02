@@ -25,7 +25,6 @@ const Autopark = () => {
   }
 
   useEffect(() => {
-
   }, [page])
 
   return (

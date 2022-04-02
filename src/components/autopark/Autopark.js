@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import "./Autopark.scss";
 import kia from "../../assets/img/kia.png";
@@ -126,13 +125,14 @@ const Autopark = () => {
     },
   ]
 
-  const tabItem = document.querySelectorAll(".tabItem");
-  const tabcontentLink = document.querySelectorAll(".tabcontent");
-
   const clickToTab = (e, index) => {
+    const tabItem = document.querySelectorAll(".tabItem");
+    const tabcontentLink = document.querySelectorAll(".tabcontent");
+
     tabcontentLink.forEach((item) => {
       item.classList.remove("d-flex");
       item.classList.add("d-none");
+      console.log(item);
     });
 
     tabItem.forEach((item) => {
