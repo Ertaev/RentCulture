@@ -97,7 +97,7 @@ const BurgerMenu = () => {
               );
             })}
             <li>
-              <a href="#" onClick={() => auth.logout()} className="d-flex ai-center" >
+              <a href="#" onClick={(e) => {e.preventDefault(), auth.logout()}} className="d-flex ai-center" >
                 <svg
                   width="24"
                   height="24"
