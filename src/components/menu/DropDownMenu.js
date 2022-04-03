@@ -84,7 +84,7 @@ const DropdownMenu = ({ clickToUser, dropDownRef }) => {
 
   return (
     <ul
-      ref={dropDownRef}
+      // ref={dropDownRef}
       className={`dropdown-menu ${clickToUser ? "active" : ""} `}
     >
       {dropdownMenu.map((item, index) => {
